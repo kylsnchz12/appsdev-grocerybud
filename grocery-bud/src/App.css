@@ -1,41 +1,71 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+:root{
+    --transition: all 0.3s linear;
+}
+.container {
+    background: #fff;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    max-width: 920px;
+    display: flex;
+    grid-gap: 1rem 2rem;
+    gap: 1rem 2rem;
+    width: 90vw;
+    margin: 0 auto;
+    max-width: 35rem;
+    margin-top: 8rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.grocery-h3 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #003326
+    ;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.grocery-form{
+    padding: 0.25rem;
+    padding-left: 1rem;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    border-color: transparent;
+    font-size: 1rem;
+    flex: 1 0 auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.div-form {
+    display: flex;
+    justify-content: center;
 }
 
-.card {
-  padding: 2em;
+.btn{
+    background: #00b386;
+    border-color: transparent;
+    color: #003326;
+    flex: 0 0 5rem;
+    display: grid;
+    align-items: center;
+    padding: 0.25rem;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition);
 }
 
-.read-the-docs {
-  color: #888;
+.btn:hover {
+    background: #00664c;
+    color: #fff;;
+}
+
+.input-grocery{
+    padding: 0.25rem;
+    padding-left: 1rem;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    border-color: transparent;
+    font-size: 1rem;
+    flex: 1 0 auto;
+    background-color: #77889948;
 }
