@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import List from './List';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
           <button className='btn'>Submit</button>
         </div>
       </form>
+      <List />
     </div>
   )
 }
