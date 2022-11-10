@@ -50,6 +50,15 @@ function App() {
     setName(thisItem.title); 
   }
 
+  const removeItem = (id) => {
+    setList(
+      list.filter((item) => item.id != id));
+  }
+
+  const clearList = () => {
+    setList([]);
+  }
+
   useEffect(() => {
     localStorage.setItem("list", JSON.stringify(list));
   }, [list])
@@ -70,7 +79,15 @@ function App() {
             </button>
         </div>
       </form>
-      <List items = {list} editItem = {editItem}/>
+      <List items = {list} editItem = {editItem} removeItem = {removeItem}/>
+      <button 
+        className='clear-btn'
+        type='button'
+        onClick={clearList}
+        
+      >
+          Clear List
+      </button>
     </div>
   )
 }

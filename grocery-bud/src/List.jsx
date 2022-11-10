@@ -1,7 +1,7 @@
 import { FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 
-const List = ({items, editItem}) => {
+const List = ({items, editItem, removeItem}) => {
     return(
         <div className="item-container">
             {items.map((item) => {
@@ -17,7 +17,11 @@ const List = ({items, editItem}) => {
                         >
                             <FaEdit/>
                         </button>
-                        <button className='delete-btn'>
+                        <button 
+                        className='delete-btn'
+                        type='button'
+                        onClick={ () => removeItem(id)}
+                        >
                             <MdDelete/>
                         </button>
                     </div>
