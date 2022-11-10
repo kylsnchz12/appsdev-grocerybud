@@ -1,4 +1,4 @@
-const Alert = ({ style, msg}) => {
+const Alert = ({ style, msg }) => {
     return(
         <p className={`alert-${style}`}>{msg}</p>
     )
