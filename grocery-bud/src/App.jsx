@@ -26,7 +26,7 @@ function App() {
     e.preventDefault();
     if(!name){
       setStyle('red')
-      setMsg('Please enter value')
+      setMsg('Please enter item to add to basket')
       setShowAlert(true)
     }else if(name && isEditing){
       setList(
@@ -41,14 +41,14 @@ function App() {
       setIsEditing(false);
       setEditId(null);
       setStyle('green')
-      setMsg('Value changed')
+      setMsg(`Item changed to ${name}`)
       setShowAlert(true)
     }else {
       const newItem = { id: new Date().getTime().toString(), title: name };
       setList([...list, newItem]);
       setName("");
       setStyle('green')
-      setMsg('Item added to the list')
+      setMsg(`'${name}' added to the list`)
       setShowAlert(true)
     }
   }
@@ -60,17 +60,17 @@ function App() {
     setName(thisItem.title); 
   }
 
-  const removeItem = (id) => {
+  const removeItem = (id, title) => {
     setList(list.filter((item) => item.id != id));
     setStyle('red')
-    setMsg('Item removed')
+    setMsg(`'${title}' removed from the basket`)
     setShowAlert(true)
   }
 
   const clearList = () => {
     setList([]);
     setStyle('red')
-    setMsg('List cleared')
+    setMsg('basket is empty')
     setShowAlert(true)
   }
 

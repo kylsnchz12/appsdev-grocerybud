@@ -20,7 +20,7 @@ const List = ({items, editItem, removeItem}) => {
                         <button 
                         className='delete-btn'
                         type='button'
-                        onClick={ () => removeItem(id)}
+                        onClick={ () => removeItem(id, title)}
                         >
                             <MdDelete/>
                         </button>
