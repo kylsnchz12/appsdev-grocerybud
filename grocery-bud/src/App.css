@@ -72,5 +72,45 @@
 }
 
 .item-container{
-    margin-left: 25px;
+    margin-left: 20px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.edit-btn{
+    background: transparent;
+    border-color: transparent;
+    color: #00b38f;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.delete-btn{
+    background: transparent;
+    border-color: transparent;
+    cursor: pointer;
+    color: #b30000;
+    transition: var(--transition);
+}
+
+.grocery-list{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: var(--transition);
+    padding: 0.25rem 1rem;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    margin: 0%;
+    height: 38px;
+    border-radius: var(--radius);
+    text-transform: capitalize;
+}
+
+.grocery-list:hover{
+    background-color:#66ff9947;
+}
+
+.item-name{
+    font-size: 16px;
 }

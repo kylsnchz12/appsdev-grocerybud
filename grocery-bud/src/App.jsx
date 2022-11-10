@@ -1,10 +1,11 @@
+import { useEffect } from 'react';
 import { useState } from 'react'
 import './App.css'
 import List from "./List";
 
 const getLocalStorage = () => {
   let list = localStorage.getItem("list");
-  if(list){
+  if (list) {
     return (list = JSON.parse(localStorage.getItem("list")));
   } else {
     return [];
@@ -14,16 +15,45 @@ const getLocalStorage = () => {
 function App() {
   const [list, setList] = useState(getLocalStorage());
   const [name, setName] = useState("")
+  const [editId, setEditId] = useState(null)
   const [isEditing, setIsEditing] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if(!name){
-      alert('Input a value')
+      alert('Input a value');
     }else if(name && isEditing){
-      {/* TODO: map out the updated list, set isediting to false, show alert*/}
+      setList(
+        list.map((item) => {
+          if(item.id == editId){
+            return {...item, title: name}
+          }
+          return item
+        })
+      );
+      setName("");
+      setIsEditing(false);
+      setEditId(null);
+      alert('changed');
+    }else {
+      const newItem = { id: new Date().getTime().toString(), title: name };
+      setList([...list, newItem]);
+      setName("");
+      alert(`added a value ${name}`);
     }
   }
+
+  const editItem = (id) => {
+    const thisItem = list.find((item) => item.id == id);
+    setIsEditing(true);
+    setEditId(id);
+    setName(thisItem.title); 
+  }
+
+  useEffect(() => {
+    localStorage.setItem("list", JSON.stringify(list));
+  }, [list])
+
   return (
     <div className='container'>
       <form className='grocery-form' onSubmit={handleSubmit}>
@@ -40,9 +70,7 @@ function App() {
             </button>
         </div>
       </form>
-      <div className='contianer'>
-          <List />
-      </div>
+      <List items = {list} editItem = {editItem}/>
     </div>
   )
 }
