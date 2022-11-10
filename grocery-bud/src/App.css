@@ -10,9 +10,9 @@
     max-width: 35rem;
     margin-top: 8rem;
     display: flex;
+    flex-direction: column;
     grid-gap: 1rem 2rem;
     gap: 1rem 2rem;
-    margin: 0 auto;
     margin-top: 8rem;
 }
 
@@ -72,12 +72,5 @@
 }
 
 .item-container{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-    transition: var(--transition);
-    padding: 0.25rem 1rem;
-    border-radius: 0.25rem;
-    text-transform: capitalize;
+    margin-left: 25px;
 }

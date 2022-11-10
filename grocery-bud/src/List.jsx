@@ -1,7 +1,9 @@
 const List = () => {
     return (
-        <div>
+        <div className="item-container">
             Hello
         </div>
     )
 }
+
+export default List;
