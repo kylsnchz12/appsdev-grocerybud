@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useState } from 'react'
 import './App.css'
 import List from "./List";
+import Alert from "./Alert"
 
 const getLocalStorage = () => {
   let list = localStorage.getItem("list");
@@ -17,11 +18,16 @@ function App() {
   const [name, setName] = useState("")
   const [editId, setEditId] = useState(null)
   const [isEditing, setIsEditing] = useState(false)
+  const [style, setStyle] = useState("")
+  const [msg, setMsg] = useState("")
+  const [showAlert, setShowAlert] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if(!name){
-      alert('Input a value');
+      setStyle('red')
+      setMsg('Please enter value')
+      setShowAlert(true)
     }else if(name && isEditing){
       setList(
         list.map((item) => {
@@ -34,12 +40,16 @@ function App() {
       setName("");
       setIsEditing(false);
       setEditId(null);
-      alert('changed');
+      setStyle('green')
+      setMsg('Value changed')
+      setShowAlert(true)
     }else {
       const newItem = { id: new Date().getTime().toString(), title: name };
       setList([...list, newItem]);
       setName("");
-      alert(`added a value ${name}`);
+      setStyle('green')
+      setMsg('Item added to the list')
+      setShowAlert(true)
     }
   }
 
@@ -51,21 +61,34 @@ function App() {
   }
 
   const removeItem = (id) => {
-    setList(
-      list.filter((item) => item.id != id));
+    setList(list.filter((item) => item.id != id));
+    setStyle('red')
+    setMsg('Item removed')
+    setShowAlert(true)
   }
 
   const clearList = () => {
     setList([]);
+    setStyle('red')
+    setMsg('List cleared')
+    setShowAlert(true)
   }
 
   useEffect(() => {
     localStorage.setItem("list", JSON.stringify(list));
   }, [list])
 
+  useEffect(() => {
+    const timer = setTimeout(() => setShowAlert(false), 2000);
+    return () => clearTimeout(timer);
+  }, [list]);
+
   return (
     <div className='container'>
       <form className='grocery-form' onSubmit={handleSubmit}>
+
+        {showAlert && <Alert style={style} msg={msg} />}
+
         <h3 className='grocery-h3'>Grocery Bud</h3>
         <div className='div-form'>
           <input 
@@ -84,7 +107,6 @@ function App() {
         className='clear-btn'
         type='button'
         onClick={clearList}
-        
       >
           Clear List
       </button>
